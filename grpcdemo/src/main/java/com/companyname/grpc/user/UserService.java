@@ -1,13 +1,13 @@
 package com.companyname.grpc.user;
 
-import com.companyname.grpc.User.Empty;
-import com.companyname.grpc.User.LoginRequest;
-import com.companyname.grpc.User.LoginResponse;
-import com.companyname.grpc.userGrpc.userImplBase;
+import com.companyname.grpc.Empty;
+import com.companyname.grpc.LoginRequest;
+import com.companyname.grpc.LoginResponse;
+import com.companyname.grpc.UserGrpc.UserImplBase;
 
 import io.grpc.stub.StreamObserver;
 
-public class UserService extends userImplBase {
+public class UserService extends UserImplBase {
 
 	@Override
 	public void login(LoginRequest request, StreamObserver<LoginResponse> responseObserver) {
@@ -18,12 +18,12 @@ public class UserService extends userImplBase {
 		
 		LoginResponse.Builder responseBuilder=LoginResponse.newBuilder();
 		if(username.equals(password)) {
-			System.out.println("matching username and password");
+//			System.out.println("matching username and password");
 			responseBuilder.setResponseCode(0);
 			responseBuilder.setResponseMessage("SUCCESS");
 		}
 		else {
-			System.out.println("non matching username and password");
+//			System.out.println("non matching username and password");
 			responseBuilder.setResponseCode(400);
 			responseBuilder.setResponseMessage("FAILURE");
 		}
