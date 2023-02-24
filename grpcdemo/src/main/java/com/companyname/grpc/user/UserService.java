@@ -15,8 +15,6 @@ public class UserService extends userImplBase {
 		System.out.println("Login is called in gRPC server");
 		String username=request.getUsername();
 		String password=request.getPassword();
-		System.out.println("Usename: "+username);
-		System.out.println("Password: "+password);
 		
 		LoginResponse.Builder responseBuilder=LoginResponse.newBuilder();
 		if(username.equals(password)) {
@@ -30,8 +28,6 @@ public class UserService extends userImplBase {
 			responseBuilder.setResponseMessage("FAILURE");
 		}
 		
-		System.out.println("responseBuilde: "+responseBuilder);
-		System.out.println("responseBuilder.build(): "+responseBuilder.build());
 		responseObserver.onNext(responseBuilder.build());
 		responseObserver.onCompleted();
 		System.out.println("Login response complete");
